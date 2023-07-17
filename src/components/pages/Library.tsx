@@ -14,14 +14,14 @@ import Store from "../../../store";
 import * as selectors from "../../../store/selectors";
 import { setSettings } from "../../../store/actions";
 
-const Settings = () => {
+const Library = () => {
   const settings = Store.useState(selectors.getSettings);
 
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Settings</IonTitle>
+          <IonTitle>Library</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
@@ -44,4 +44,4 @@ const Settings = () => {
   );
 };
 
-export default Settings;
+export default Library;

@@ -12,23 +12,24 @@ import {
   IonToolbar,
 } from "@ionic/react";
 import { useEffect, useState } from "react";
-import { cog, flash, list } from "ionicons/icons";
+import { list, home, search } from "ionicons/icons";
+import { PATHS, PAGES } from "~/utils/constants";
 
 const pages = [
   {
-    title: "Feed",
-    icon: flash,
-    url: "/tabs/feed",
+    title: PAGES.HOME,
+    icon: home,
+    url: PATHS.HOME,
   },
   {
-    title: "Lists",
+    title: PAGES.SEARCH,
+    icon: search,
+    url: PATHS.SEARCH,
+  },
+  {
+    title: PAGES.LIBRARY,
     icon: list,
-    url: "/tabs/lists",
-  },
-  {
-    title: "Settings",
-    icon: cog,
-    url: "/tabs/settings",
+    url: PATHS.LIBRARY,
   },
 ];
 

@@ -33,18 +33,18 @@ const AllLists = () => {
   );
 };
 
-const Lists = () => {
+const Search = () => {
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Lists</IonTitle>
+          <IonTitle>Search</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Lists</IonTitle>
+            <IonTitle size="large">SEARCH</IonTitle>
           </IonToolbar>
         </IonHeader>
         <AllLists />
@@ -53,4 +53,4 @@ const Lists = () => {
   );
 };
 
-export default Lists;
+export default Search;

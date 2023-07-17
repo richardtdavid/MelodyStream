@@ -7,39 +7,40 @@ import {
   IonIcon,
   IonLabel,
 } from "@ionic/react";
-import { cog, flash, list } from "ionicons/icons";
+import { list, home, search } from "ionicons/icons";
 
-import Home from "./Feed";
-import Lists from "./Lists";
+import Home from "./Home";
+import Search from "./Search";
 import ListDetail from "./ListDetail";
-import Settings from "./Settings";
+import Library from "./Library";
+import { PATHS, PAGES } from "~/utils/constants";
 
 const Tabs = () => {
   return (
     <IonTabs>
       <IonRouterOutlet>
-        <Route path="/tabs/feed" component={Home} exact={true} />
-        <Route path="/tabs/lists" component={Lists} exact={true} />
-        <Route path="/tabs/lists/:listId" component={ListDetail} exact={true} />
-        <Route path="/tabs/settings" component={Settings} exact={true} />
+        <Route path={PATHS.HOME} component={Home} exact={true} />
+        <Route path={PATHS.SEARCH} component={Search} exact={true} />
+        <Route path={PATHS.LIST_DETAIL} component={ListDetail} exact={true} />
+        <Route path={PATHS.LIBRARY} component={Library} exact={true} />
         <Route
           path="/tabs"
-          render={() => <Redirect to="/tabs/feed" />}
+          render={() => <Redirect to={PATHS.HOME} />}
           exact={true}
         />
       </IonRouterOutlet>
       <IonTabBar slot="bottom">
-        <IonTabButton tab="tab1" href="/tabs/feed">
-          <IonIcon icon={flash} />
-          <IonLabel>Feed</IonLabel>
+        <IonTabButton tab="tab1" href={PATHS.HOME}>
+          <IonIcon icon={home} />
+          <IonLabel>{PAGES.HOME}</IonLabel>
         </IonTabButton>
-        <IonTabButton tab="tab2" href="/tabs/lists">
+        <IonTabButton tab="tab2" href={PATHS.SEARCH}>
+          <IonIcon icon={search} />
+          <IonLabel>{PAGES.SEARCH}</IonLabel>
+        </IonTabButton>
+        <IonTabButton tab="tab3" href={PATHS.LIBRARY}>
           <IonIcon icon={list} />
-          <IonLabel>Lists</IonLabel>
-        </IonTabButton>
-        <IonTabButton tab="tab3" href="/tabs/settings">
-          <IonIcon icon={cog} />
-          <IonLabel>Settings</IonLabel>
+          <IonLabel>{PAGES.LIBRARY}</IonLabel>
         </IonTabButton>
       </IonTabBar>
     </IonTabs>

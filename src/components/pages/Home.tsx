@@ -16,7 +16,11 @@ import {
 } from "@ionic/react";
 import Notifications from "./Notifications";
 import { useState } from "react";
-import { notificationsOutline } from "ionicons/icons";
+import {
+  notificationsOutline,
+  settingsOutline,
+  timerOutline,
+} from "ionicons/icons";
 
 type PostOutput = inferQueryOutput<"post.all">[0];
 
@@ -59,14 +63,14 @@ const FeedCard = (props: PostOutput) => {
   );
 };
 
-const Feed = () => {
+const Home = () => {
   const posts = trpc.useQuery(["post.all"]);
   const [showNotifications, setShowNotifications] = useState(false);
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Feed</IonTitle>
+          {/* <IonTitle>Good evening</IonTitle> */}
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
@@ -74,13 +78,20 @@ const Feed = () => {
             <IonButton onClick={() => setShowNotifications(true)}>
               <IonIcon icon={notificationsOutline} />
             </IonButton>
+            <IonButton onClick={() => setShowNotifications(true)}>
+              <IonIcon icon={timerOutline} />
+            </IonButton>
+            <IonButton onClick={() => setShowNotifications(true)}>
+              <IonIcon icon={settingsOutline} />
+            </IonButton>
           </IonButtons>
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding" fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Feed</IonTitle>
+            {/* TODO: look into this */}
+            <IonTitle size="large">HOME</IonTitle>
           </IonToolbar>
         </IonHeader>
         <Notifications
@@ -97,4 +108,4 @@ const Feed = () => {
   );
 };
 
-export default Feed;
+export default Home;
