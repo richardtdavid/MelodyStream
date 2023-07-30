@@ -5,6 +5,7 @@
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { createRouter } from "~/server/createRouter";
+import { downloadMp3 } from "../downloader/downloader";
 
 export const listRouter = createRouter()
   // read
@@ -14,8 +15,8 @@ export const listRouter = createRouter()
        * For pagination you can have a look at this docs site
        * @link https://trpc.io/docs/useInfiniteQuery
        */
-
-      return [];
+      const song = await downloadMp3();
+      return [song];
     },
   })
   .query("byId", {

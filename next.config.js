@@ -28,7 +28,7 @@ module.exports = getConfig({
     NODE_ENV: env.NODE_ENV,
   },
   images: {
-    domains: ["images.unsplash.com"],
+    domains: ["images.unsplash.com", "tailwindcss.com"],
   },
   swcMinify: true,
 });

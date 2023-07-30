@@ -21,47 +21,48 @@ import {
   settingsOutline,
   timerOutline,
 } from "ionicons/icons";
+import { AudioPlayer } from "../ui/AudioPlayer";
 
 type PostOutput = inferQueryOutput<"post.all">[0];
 
-const FeedCard = (props: PostOutput) => {
-  return (
-    <Card className="my-4 mx-auto">
-      {props.image && (
-        <div className="h-32 w-full relative">
-          <Image
-            className="rounded-t-xl"
-            objectFit="cover"
-            src={props.image}
-            alt=""
-            layout="fill"
-          />
-        </div>
-      )}
-      <div className="px-4 py-4 bg-white rounded-b-xl dark:bg-gray-900">
-        <h2 className="font-bold text-2xl text-gray-800 dark:text-gray-100">
-          {props.title}
-        </h2>
-        <p className="sm:text-sm text-s text-gray-500 mr-1 my-3 dark:text-gray-400">
-          {props.content}
-        </p>
-        <div className="flex items-center space-x-4">
-          <div className="w-10 h-10 relative">
-            <Image
-              layout="fill"
-              src={props.author.avatar}
-              className="rounded-full"
-              alt=""
-            />
-          </div>
-          <h3 className="text-gray-500 dark:text-gray-200 m-l-8 text-sm font-medium">
-            {props.author.name}
-          </h3>
-        </div>
-      </div>
-    </Card>
-  );
-};
+// const FeedCard = (props: PostOutput) => {
+//   return (
+//     <Card className="my-4 mx-auto">
+//       {props.image && (
+//         <div className="h-32 w-full relative">
+//           <Image
+//             className="rounded-t-xl"
+//             objectFit="cover"
+//             src={props.image}
+//             alt=""
+//             layout="fill"
+//           />
+//         </div>
+//       )}
+//       <div className="px-4 py-4 bg-white rounded-b-xl dark:bg-gray-900">
+//         <h2 className="font-bold text-2xl text-gray-800 dark:text-gray-100">
+//           {props.title}
+//         </h2>
+//         <p className="sm:text-sm text-s text-gray-500 mr-1 my-3 dark:text-gray-400">
+//           {props.content}
+//         </p>
+//         <div className="flex items-center space-x-4">
+//           <div className="w-10 h-10 relative">
+//             <Image
+//               layout="fill"
+//               src={props.author.avatar}
+//               className="rounded-full"
+//               alt=""
+//             />
+//           </div>
+//           <h3 className="text-gray-500 dark:text-gray-200 m-l-8 text-sm font-medium">
+//             {props.author.name}
+//           </h3>
+//         </div>
+//       </div>
+//     </Card>
+//   );
+// };
 
 const Home = () => {
   const posts = trpc.useQuery(["post.all"]);
@@ -87,7 +88,7 @@ const Home = () => {
           </IonButtons>
         </IonToolbar>
       </IonHeader>
-      <IonContent className="ion-padding" fullscreen>
+      <IonContent className="ion-padding " fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
             {/* TODO: look into this */}
@@ -101,7 +102,8 @@ const Home = () => {
         {!posts.data ? (
           <IonLoading isOpen={true}></IonLoading>
         ) : (
-          posts.data.map((i, index) => <FeedCard {...i} key={index} />)
+          // posts.data.map((i, index) => <FeedCard {...i} key={index} />)
+          <AudioPlayer />
         )}
       </IonContent>
     </IonPage>
